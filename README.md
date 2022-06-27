@@ -12,7 +12,7 @@
 
 ## CMS - Content Management System (headless)
 
-- A tecnologia via ser o GraphCMS, ja que estou utilizando o GraphQL
+- A tecnologia vai ser o GraphCMS, ja que estou utilizando o GraphQL
 
 - O painel de adm é o headless cms
 
@@ -232,7 +232,7 @@ mutation CreateSubscriber($name: String!, $email: String!) {
 ### Adicionando na Aplicação
 - Copiar o "value" do token
 
-- No src do projeto, criar uma variável ambiente no Vite, <i>variáveis ambientes, são dados que a gente quer diferente para cada ambiente  da aplicação, (ex: para produção um valor, testes outro, desenvolvimento outro)</i>
+- No src do projeto, criar uma variável ambiente no Vite - <i>variáveis ambientes, são dados que a gente quer diferente para cada ambiente  da aplicação, (ex: para produção um valor, testes outro, desenvolvimento outro)</i>
   - criar arquivo chamado .env
   - e dentro desse arquivo criar as variáveis ambiente, sua estrutura é assim para o Vite <code>VITE_NOME_DA_VARIAVEL= seu token copiado la do GraphCMS</code> 
   - adicionar ao .gitignore - <i>porque esse é um arquivo pessoal, que eu não quero que fique exposto no github</i>
@@ -327,7 +327,7 @@ const color = 'red';
 //adicionar a interpolação de js mesmo
 <div className={`w-full ${color === 'red' ? 'bg-color-red' : 'bg-color-blue'}`}></div>
 ```
-- Outra alternativa é usando a lib classnames
+- Outra alternativa é usando a lib <a href="https://www.npmjs.com/package/classnames">classnames</a>
   - <code>npm i classnames</code>
 
 ```tsx
@@ -430,3 +430,8 @@ export function Sidebar(){
   return ()
 }
 ```
+
+## Deploy
+
+- Vou fazer o deploy desse projeto na Vercel, e assim configurar la está tudo certinho, ja conectado com meu github
+- Só preciso selecionar qual o projeto que eu quero subir e além disso configurar as variáveis ambientes na sessão 
