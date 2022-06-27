@@ -1,3 +1,23 @@
+# Sumário
+
+-[IGNITE LAB by Maxwell](#ignite-lab-by-maxwell)
+-[CMS - Content Management System (headless)](#cms---content-management-system-headless))
+  -[E como funciona ?](#e-como-funciona)
+-[CMS](#cms)
+-[GraphQL](#graphql)
+  -[Conexão da API com a aplicação](#conexão-da-api-com-a-aplicação)
+  -[Chamadas do React com Apollo](#chamadas-do-react-com-apollo)
+-[Erro comum de key ao usar map no React](#erro-comum-de-key-ao-usar-map-no-react)
+-[Date-fns](#date-fns)
+-[Vimejs](#vimejs)
+-[Aprendendo cadastrar dados no GraphCMS](#aprendendo-cadastrar-dados-no-graphcms)
+-[Definindo token e permissões](#definindo-token-e-permissões)
+-[Adicionando na Aplicação](#adicionando-codegen-na-aplicação)
+-[Condicionais dentro do Tailwind](#condicionais-dentro-do-tailwind)
+-[GraphQL Code Generator](#graphql-code-generator)
+-[Adicionando codegen na aplicação](#adicionando-codegen-na-aplicação)
+
+
 # IGNITE LAB by Maxwell 
 
 - Tecnologias
@@ -229,7 +249,7 @@ mutation CreateSubscriber($name: String!, $email: String!) {
 
 - Agora, para adicionar uma nova permissão, é só clicar no botão <strong>create permission</strong> e selecionar qual model e o que quer permitir, no meu caso vai ser no model <strong>Subscriber</strong> e a opção <strong>Create</strong>, e criar. - <i>O que eu fiz aqui é que qualquer um que tiver esse token que eu criei, pode criar uma novo subscriber</i>
 
-### Adicionando na Aplicação
+### Adicionando token na Aplicação
 - Copiar o "value" do token
 
 - No src do projeto, criar uma variável ambiente no Vite - <i>variáveis ambientes, são dados que a gente quer diferente para cada ambiente  da aplicação, (ex: para produção um valor, testes outro, desenvolvimento outro)</i>
@@ -344,7 +364,7 @@ const color = 'red';
 
 - Fazendo as requisições direto da aplicação, ela não tem a inteligência de mostrar quais são os campos que existem, ocasionando facilmente um bug na requisição, além de que, por usar typescript, tem sempre que definir quais os tipos dos campos, mas la no GraphCMS ja foi definido isso, mas na aplicação ainda não.
 
-### Adicionando na aplicação
+### Adicionando codegen na aplicação
 
 - Instalar essas ferramentas
   - <code>npm i @graphql-codegen/typescript-operations @graphql-codegen/typescript @graphql-codegen/typescript-react-apollo -D</code>
