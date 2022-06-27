@@ -1,7 +1,7 @@
 # Sumário
 
 -[IGNITE LAB by Maxwell](#ignite-lab-by-maxwell)
--[CMS - Content Management System (headless)](#cms---content-management-system-headless))
+-[CMS - Content Management System (headless)](#cms---content-management-system-headless)
   -[E como funciona ?](#e-como-funciona)
 -[CMS](#cms)
 -[GraphQL](#graphql)
