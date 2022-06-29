@@ -36,7 +36,7 @@
 
 - O painel de adm é o headless cms
 
-- Os dados de estilização são fornecidos através de uma API REST OU GraphQL
+- Os dados de que vão compor a tela são fornecidos através de uma API REST OU GraphQL
 
 - O frontend é desconectado com o CMS, dando assim muito mais flexibilidade de fazer o que quiser na interface
 
@@ -53,7 +53,7 @@ O React vai fazer chamadas API para esse CMS, para poder mostrar em tela as info
 - E dentro desses models tem que falar quais são os seus campos, são quais informações vou armazenar.
 - Dentro do GraphCMS também é possível fazer relacionamentos (1 pra 1, 1 pra n, n pra n).
 
-- Toda informação dentro do GraphCMS tem um estado, você pode salvar como rascunho  (quando salvo como rascunho, não vai ser possível acessar aquele item pela API)
+- Toda informação dentro do GraphCMS tem um estado, você pode salvar como rascunho  (quando salvo como rascunho, não vai ser possível acessar aquele item pela API, a não ser que ceda essa opção nas configurações)
 
 
 ## GraphQL
@@ -78,11 +78,11 @@ O React vai fazer chamadas API para esse CMS, para poder mostrar em tela as info
   }
 ```
 
-- OverFetching: Quando o backend retorna muito mais informações do que você precisa. Ou seja, o backend manda todos os dados e o frontend se vira para usar só o que ele precisa.
+- *OverFetching:* Quando o backend retorna muito mais informações do que você precisa. Ou seja, o backend manda todos os dados e o frontend se vira para usar só o que ele precisa.
 
-- UnderFetching: Quando o frontend precisa de um dado específico e o backend não retorna esse dado da requisição. Ou seja, quando o backend não retorna todas as coisas que o front precisa.
+- *UnderFetching:* Quando o frontend precisa de um dado específico e o backend não retorna esse dado da requisição. Ou seja, quando o backend não retorna todas as coisas que o front precisa.
 
-- Com GraphQL: Isso ja não acontece, porque na estrutura da requisição ele ja fala o que vai precisar em qual lugar e qual requisição.
+- *Com GraphQL:* Isso ja não acontece, porque na estrutura da requisição ele ja fala o que vai precisar em qual lugar e qual requisição.
 
 
 ### Conexão da API com a aplicação
@@ -188,9 +188,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 ```
 
-- Para fazer essas queries, uso a ferramenta Apollo (poderia ser usado o próprio fetch do js, axios), porém essas ferramentas são feitas para API GraphQL
+- Para fazer essas queries, uso a ferramenta Apollo (poderia ser usado o próprio fetch do js, axios), porém essas ferramentas não são feitas para API GraphQL
 
-- O Apollo faz controle de chace, ou seja, caso faça duas req iguais, ele retorna os mesmos dados
+- O Apollo faz controle de cache, ou seja, caso faça duas req iguais, ele retorna os mesmos dados
 Exemplo de código: 
 
 ## Date-fns
@@ -203,26 +203,26 @@ Exemplo de código:
 - O que é mutation?
   - Qualquer manipulação do dado que não seja apenas leitura, (ex: add, deletar, alterar), isso tudo são mutations
 
-- Ir ao playground do GraphCMS, e na lista da esquerda, escrolar até o final
+- Ir ao playground do GraphCMS, e na lista da esquerda, <i>escrolar</i> até o final
 
 - Na parte de <code>Add new</code> e selecionar mutation e clicar no <strong>+</strong>, ao lado
 
 - Vai criar uma nova aba com um ícone de M branco e fundo vermelho
 obs: O GraphCMS, cria automaticamente "rotas" para escrita, atualização, remoção de todos os models que você criar
 
--  Uma coisa legal do GraphCMS é: acabei de criar um novo Inscrito, beleza. Agora eu quero retornar algum dado daquela informação recém criada, ex o ID... da para fazer isso na mesma req
+-  Uma coisa legal do GraphCMS é: "acabei de criar um novo Inscrito, beleza. Agora eu quero retornar algum dado daquela informação recém criada, ex o ID...", da para fazer isso na mesma req
 
-- Quando você quiser adicionar algum dado de alguma input do usuário, basta criar uma variável. As variáveis no GraphQL, são definidas assim: <code>$nomeDaVariavel</code>; Caso seja um dado <strong>obrigatório</strong>, basta colocar exclamação '!'
+- Quando você quiser adicionar algum dado de algum input do usuário, basta criar uma variável. As variáveis no GraphQL, são definidas assim: <code>$nomeDaVariavel</code>; Caso seja um dado <strong>obrigatório</strong>, basta colocar exclamação '!'
 
 ```ts
-//Aqui estou criando uma nova mutation com o nome CreateSubscriber que recebe duas variáveis do tipo String e obrigatórias
+//Aqui estou criando uma nova mutation com o nome CreateSubscriber que recebe duas variáveis obrigatórias do tipo String
 mutation CreateSubscriber($name: String!, $email: String!) {
   createSubscriber(data: {name: $name, email: $email}) {
     id
   }
 }
 ```
-- Para testar se essa Query funciona, nessa mesma aba 'Playground', você vai ver um <strong>QUERY VARIABLES</strong>, daí fazer a requisição em JSON. Obs: <strong>sempre use aspas dupla</strong>
+- Para testar essa Query, nessa mesma aba 'Playground', você vai ver um <strong>QUERY VARIABLES</strong>, daí fazer a requisição em JSON. Obs: <strong>sempre use aspas dupla</strong>
 
 ```json
 {
@@ -230,9 +230,8 @@ mutation CreateSubscriber($name: String!, $email: String!) {
   "email": "maxwellalves@gmail.com"
 }
 ```
-- Clicar no símbolo de Play la em cima 
-- Se deu tudo certo, vai retornar ao lado
-- Vai na aba <strong>Content</strong> e no model que você escolheu, nesse caso salvei no <strong>Subscriber</strong> salvar como "Draft", que seria um "Rascunho" 
+- Clicar no símbolo de Play la em cima, para fazer a requisição. 
+- Vai na aba <strong>Content</strong> e no model que você escolheu, nesse caso salvei no <strong>Subscriber</strong> (salva como "Draft", que seria um "Rascunho" automaticamente) 
 
 ### Definindo token e permissões
 - Quando você não quer só ler os dados do GraphCMS:
@@ -243,7 +242,7 @@ mutation CreateSubscriber($name: String!, $email: String!) {
   - E selecionar a opção de Published
   - Por fim, criar
 
-- Agora na tela que você foi direcionado ir até <strong>Management API</strong> e clicar no botão de <strong>No, I'll configure custom permissions</strong> - <i>Isso é para que quem tiver esse acesso, apenas não vai poder criar  novos models e fazer várias outras coisas, no meu caso, só estou querendo criar um novo Subscriber</i>.
+- Agora na tela que você foi direcionado ir até <strong>Management API</strong> e clicar no botão de <strong>No, I'll configure custom permissions</strong> - <i>Isso é para que quem tiver esse acesso, só não vai poder criar  novos models e fazer várias outras coisas, no meu caso, só estou querendo criar um novo Subscriber.</i>
 
 - Daí, agora em <strong>Content API</strong>, clicar em <strong>Yes, initialize defaults</strong> - <i>Isso faz com que possa ter a leitura de qualquer model publicado</i>
 
@@ -252,7 +251,7 @@ mutation CreateSubscriber($name: String!, $email: String!) {
 ### Adicionando token na Aplicação
 - Copiar o "value" do token
 
-- No src do projeto, criar uma variável ambiente no Vite - <i>variáveis ambientes, são dados que a gente quer diferente para cada ambiente  da aplicação, (ex: para produção um valor, testes outro, desenvolvimento outro)</i>
+- No root do projeto, criar uma variável ambiente no Vite - <i>variáveis ambientes, são dados que a gente quer diferente para cada ambiente  da aplicação, (ex: para produção um valor, testes outro, desenvolvimento outro)</i>
   - criar arquivo chamado .env
   - e dentro desse arquivo criar as variáveis ambiente, sua estrutura é assim para o Vite <code>VITE_NOME_DA_VARIAVEL= seu token copiado la do GraphCMS</code> 
   - adicionar ao .gitignore - <i>porque esse é um arquivo pessoal, que eu não quero que fique exposto no github</i>
@@ -318,14 +317,14 @@ export function Subscribe() {
         type="text"
         className="bg-gray-900 rounded px-5 h-14"
         placeholder="Seu nome completo"
-        onChange={event => setName(event.target.value)}
+        onChange={event => setName(event.target.value)} //pegar o valor atual a cada mudança no valor do input e ceta na variável name através do useState 'setName'.
         />
 
       <input 
         type="email"
         className="bg-gray-900 rounded px-5 h-14"
         placeholder="Digite seu e-mail"
-        onChange={event => setEmail(event.target.value)}
+        onChange={event => setEmail(event.target.value)} //pegar o valor atual a cada mudança no valor do input e ceta na variável email através do useState 'setEmail'.
         />
 
       <button 
